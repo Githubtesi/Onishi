@@ -2,8 +2,6 @@ SendMode Input
 SetWorkingDir %A_ScriptDir%
 
 ; 移動関連
-; https://tech.aainc.co.jp/archives/2784
-; https://meian-blog.net/teck/autohotkey%E3%81%AB%E3%81%A6%E5%A4%89%E6%8F%9B%E3%82%AD%E3%83%BC%E3%83%BB%E7%84%A1%E5%A4%89%E6%8F%9B%E3%82%AD%E3%83%BC/
 ; 変換 + j⇒ ↓
 sc079 & j:: Send, {Down}
 ; 変換 + k⇒ ↓
