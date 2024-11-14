@@ -1,9 +1,39 @@
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 
+; 移動関連
+; https://tech.aainc.co.jp/archives/2784
+; https://meian-blog.net/teck/autohotkey%E3%81%AB%E3%81%A6%E5%A4%89%E6%8F%9B%E3%82%AD%E3%83%BC%E3%83%BB%E7%84%A1%E5%A4%89%E6%8F%9B%E3%82%AD%E3%83%BC/
+; 変換 + j⇒ ↓
+sc079 & j:: Send, {Down}
+; 変換 + k⇒ ↓
+sc079 & k:: Send, {Up}
+; 変換 + z⇒Windows + d （全ウィンドウ最小化）
+sc079 & z:: Send, #d
+; 変換 + SPACE⇒Enter
+; sc079 & vk20sc039:: Send, {Enter}
+; 無変換 + j⇒PageUp
+sc07B & j:: Send, {PgUp}
+; 無変換 + k⇒PageDown
+sc07B & k:: Send, {PgDn}
+; 無変換 + h⇒Home
+sc07B & h:: Send, {Home}
+; 無変換 + l⇒End
+sc07B & l:: Send, {End}
+; 無変換 + o⇒Tab
+; 無変換 + u⇒Shift + Tab
+; 無変換 + >⇒Alt + Tab （タスクの切り替え）
+; 無変換 + <⇒Shift + Alt + Tab （タスクの逆切り替え）
+; 無変換 + @⇒Alt + F4 （アプリ終了）
+; 無変換 + 変換⇒半角/全角 （IME切り替え）
+; sc07B & sc079 :: Send, {vkF3sc029}
+; CTRL + SPACE⇒BS
+; LCtrl & vk20sc039 :: Send, {BS}
 
 
-;k::n→shift
+
+; 大西キーボード
+;k::n→alt
 k::
     KeyWait, k, T0.2  ; 0.2秒待機して、押し続けられているか判定
     if (ErrorLevel) {  ; 長押しの場合
@@ -17,8 +47,6 @@ k::
 return
 
 
-
-
 ;d::a→alt
 d::
     KeyWait, d, T0.2  ; 0.2秒待機して、押し続けられているか判定
@@ -30,6 +58,10 @@ d::
     } else {  ; 短押しの場合
         SendInput a  ; 短押しのときだけ a を1度送信
     }
+return
+
+HoldAlt:
+    Send {Alt Down}
 return
 
 ;f::o→Shift
@@ -46,9 +78,9 @@ f::
 return
 
 
-;j::t
+;j::t→Shift
 j::
-    KeyWait, j, T0.2  ; 0.2秒待機して、押し続けられているか判定
+    KeyWait, j , T0.2  ; 0.2秒待機して、押し続けられているか判定
     if (ErrorLevel) {  ; 長押しの場合
         SetTimer, HoldShift, 0  ; タイマーを開始してShiftを押し続ける
         KeyWait, j  ; jキーが離されるまで待機
@@ -59,6 +91,9 @@ j::
     }
 return
 
+HoldShift:
+    Send {Shift Down}
+return
 
 
 -::/
@@ -89,22 +124,3 @@ m::d
 ,::m
 .::j
 /::b
-
-
-
-HoldShift:
-    Send {Shift Down}
-return
-
-HoldAlt:
-    Send {Alt Down}
-return
-
-;Keybordmanagerで設定
-;スペースをエンター
-;Space::Enter
-;無変換をバックスペース
-;IEMNonConvert::Backspace
-;変換をスペース
-;Convert::Space
-;CapllockをCtrl
