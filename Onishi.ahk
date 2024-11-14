@@ -48,7 +48,7 @@ return
 
 ;j::t
 j::
-    KeyWait, t, T0.2  ; 0.2秒待機して、押し続けられているか判定
+    KeyWait, j, T0.2  ; 0.2秒待機して、押し続けられているか判定
     if (ErrorLevel) {  ; 長押しの場合
         SetTimer, HoldShift, 0  ; タイマーを開始してShiftを押し続ける
         KeyWait, j  ; jキーが離されるまで待機
