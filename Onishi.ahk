@@ -45,70 +45,70 @@ sc07B & Space::Send, {Backspace}
 
 ; 大西キーボード
 
-; k::n
+k::n
 ;k::n→alt
-k::
-    KeyWait, k, T0.2  ; 0.2秒待機して、押し続けられているか判定
-    if (ErrorLevel) {  ; 長押しの場合
-        SetTimer, HoldAlt, 0  ; タイマーを開始してAltを押し続ける
-        KeyWait, k  ; kキーが離されるまで待機
-        SetTimer, HoldAlt, Off  ; タイマーをオフにしてAltを放す
-        Send {Alt Up}
-    } else {  ; 短押しの場合
-        SendInput n  ; 短押しのときだけ n を1度送信
-    }
-return
+; k::
+;     KeyWait, k, T0.2  ; 0.2秒待機して、押し続けられているか判定
+;     if (ErrorLevel) {  ; 長押しの場合
+;         SetTimer, HoldAlt, 0  ; タイマーを開始してAltを押し続ける
+;         KeyWait, k  ; kキーが離されるまで待機
+;         SetTimer, HoldAlt, Off  ; タイマーをオフにしてAltを放す
+;         Send {Alt Up}
+;     } else {  ; 短押しの場合
+;         SendInput n  ; 短押しのときだけ n を1度送信
+;     }
+; return
 
 
-; d::a
-;d::a→alt
-d::
-    KeyWait, d, T0.2  ; 0.2秒待機して、押し続けられているか判定
-    if (ErrorLevel) {  ; 長押しの場合
-        SetTimer, HoldAlt, 0  ; タイマーを開始してAltを押し続ける
-        KeyWait, d  ; dキーが離されるまで待機
-        SetTimer, HoldAlt, Off  ; タイマーをオフにしてAltを放す
-        Send {Alt Up}
-    } else {  ; 短押しの場合
-        SendInput a  ; 短押しのときだけ a を1度送信
-    }
-return
+d::a
+; ;d::a→alt
+; d::
+;     KeyWait, d, T0.2  ; 0.2秒待機して、押し続けられているか判定
+;     if (ErrorLevel) {  ; 長押しの場合
+;         SetTimer, HoldAlt, 0  ; タイマーを開始してAltを押し続ける
+;         KeyWait, d  ; dキーが離されるまで待機
+;         SetTimer, HoldAlt, Off  ; タイマーをオフにしてAltを放す
+;         Send {Alt Up}
+;     } else {  ; 短押しの場合
+;         SendInput a  ; 短押しのときだけ a を1度送信
+;     }
+; return
 
-HoldAlt:
-    Send {Alt Down}
-return
+; HoldAlt:
+;     Send {Alt Down}
+; return
 
-; f::o
+f::o
 ;f::o→Shift
-f::
-    KeyWait, f, T0.2  ; 0.2秒待機して、押し続けられているか判定
-    if (ErrorLevel) {  ; 長押しの場合
-        SetTimer, HoldShift, 0  ; タイマーを開始してShiftを押し続ける
-        KeyWait, f  ; fキーが離されるまで待機
-        SetTimer, HoldShift, Off  ; タイマーをオフにしてShiftを放す
-        Send {Shift Up}
-    } else {  ; 短押しの場合
-        SendInput o  ; 短押しのときだけ o を1度送信
-    }
-return
+; f::
+;     KeyWait, f, T0.2  ; 0.2秒待機して、押し続けられているか判定
+;     if (ErrorLevel) {  ; 長押しの場合
+;         SetTimer, HoldShift, 0  ; タイマーを開始してShiftを押し続ける
+;         KeyWait, f  ; fキーが離されるまで待機
+;         SetTimer, HoldShift, Off  ; タイマーをオフにしてShiftを放す
+;         Send {Shift Up}
+;     } else {  ; 短押しの場合
+;         SendInput o  ; 短押しのときだけ o を1度送信
+;     }
+; return
 
-; j::t
+j::t
 ;j::t→Shift
-j::
-    KeyWait, j , T0.2  ; 0.2秒待機して、押し続けられているか判定
-    if (ErrorLevel) {  ; 長押しの場合
-        SetTimer, HoldShift, 0  ; タイマーを開始してShiftを押し続ける
-        KeyWait, j  ; jキーが離されるまで待機
-        SetTimer, HoldShift, Off  ; タイマーをオフにしてShiftを放す
-        Send {Shift Up}
-    } else {  ; 短押しの場合
-        SendInput t  ; 短押しのときだけ t を1度送信
-    }
-return
+; j::
+;     KeyWait, j , T0.2  ; 0.2秒待機して、押し続けられているか判定
+;     if (ErrorLevel) {  ; 長押しの場合
+;         SetTimer, HoldShift, 0  ; タイマーを開始してShiftを押し続ける
+;         KeyWait, j  ; jキーが離されるまで待機
+;         SetTimer, HoldShift, Off  ; タイマーをオフにしてShiftを放す
+;         Send {Shift Up}
+;     } else {  ; 短押しの場合
+;         SendInput t  ; 短押しのときだけ t を1度送信
+;     }
+; return
 
-HoldShift:
-    Send {Shift Down}
-return
+; HoldShift:
+;     Send {Shift Down}
+; return
 
 
 -::/
