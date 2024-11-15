@@ -1,7 +1,7 @@
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 
-; 移動関連
+; 移動関連-小さな移動
 ; 変換 + h⇒ ←
 sc079 & h:: Send, {Left}
 ; 変換 + l⇒ →
@@ -11,6 +11,7 @@ sc079 & j:: Send, {Down}
 ; 変換 + k⇒ ↑
 sc079 & k:: Send, {Up}
 
+; 移動関連-大きな移動
 ; 無変換 + j⇒PageUp
 sc07B & j:: Send, {PgUp}
 ; 無変換 + k⇒PageDown
@@ -25,10 +26,13 @@ sc07B & l:: Send, {End}
 sc079 & z:: Send, #d
 ; 変換 + SPACE ⇒ Enter
 sc079 & Space::Send, {Enter}
+
+
 ; 無変換 + 変換⇒半角/全角 （IME切り替え）
 sc07B & sc079:: Send, {vkF3sc029}
-; CTRL + SPACE ⇒ Backspace
-^Space::Send, {BS}
+; 無変換 + SPACE ⇒ Backspace
+sc07B & Space::Send, {Backspace}
+
 
 
 ; 無変換 + o⇒Tab
