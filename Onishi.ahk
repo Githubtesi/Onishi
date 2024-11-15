@@ -44,6 +44,8 @@ sc07B & Space::Send, {Backspace}
 
 
 ; 大西キーボード
+
+; k::n
 ;k::n→alt
 k::
     KeyWait, k, T0.2  ; 0.2秒待機して、押し続けられているか判定
@@ -58,6 +60,7 @@ k::
 return
 
 
+; d::a
 ;d::a→alt
 d::
     KeyWait, d, T0.2  ; 0.2秒待機して、押し続けられているか判定
@@ -75,6 +78,7 @@ HoldAlt:
     Send {Alt Down}
 return
 
+; f::o
 ;f::o→Shift
 f::
     KeyWait, f, T0.2  ; 0.2秒待機して、押し続けられているか判定
@@ -88,7 +92,7 @@ f::
     }
 return
 
-
+; j::t
 ;j::t→Shift
 j::
     KeyWait, j , T0.2  ; 0.2秒待機して、押し続けられているか判定
@@ -121,7 +125,6 @@ o::y
 a::e
 s::i
 d::a
-f::o
 g::-
 h::k
 j::t
