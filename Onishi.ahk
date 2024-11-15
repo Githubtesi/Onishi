@@ -12,9 +12,9 @@ sc079 & j:: Send, {Down}
 sc079 & k:: Send, {Up}
 
 ; 移動関連-大きな移動
-; 無変換 + j⇒PageUp
+; 無変換 + k⇒PageUp
 sc07B & j:: Send, {PgUp}
-; 無変換 + k⇒PageDown
+; 無変換 + j⇒PageDown
 sc07B & k:: Send, {PgDn}
 ; 無変換 + h⇒Home
 sc07B & h:: Send, {Home}
