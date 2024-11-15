@@ -124,11 +124,8 @@ o::y
 
 a::e
 s::i
-d::a
 g::-
 h::k
-j::t
-k::n
 l::s
 sc027::h
 
