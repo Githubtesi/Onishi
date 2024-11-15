@@ -22,8 +22,8 @@ sc07B & h:: Send, {Home}
 sc07B & l:: Send, {End}
 
 ; コマンド関連
-; 変換 + z⇒Windows + d （全ウィンドウ最小化）
-sc079 & z:: Send, #d
+; 無変換 + d⇒Windows + d （全ウィンドウ最小化）
+sc07B & d:: Send, #d
 ; 変換 + SPACE ⇒ Enter
 sc079 & Space::Send, {Enter}
 
