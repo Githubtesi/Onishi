@@ -2,14 +2,15 @@ SendMode Input
 SetWorkingDir %A_ScriptDir%
 
 ; 移動関連
+; 変換 + h⇒ ←
+sc079 & h:: Send, {Left}
+; 変換 + l⇒ →
+sc079 & l:: Send, {Right}
 ; 変換 + j⇒ ↓
 sc079 & j:: Send, {Down}
-; 変換 + k⇒ ↓
+; 変換 + k⇒ ↑
 sc079 & k:: Send, {Up}
-; 変換 + z⇒Windows + d （全ウィンドウ最小化）
-sc079 & z:: Send, #d
-; 変換 + SPACE⇒Enter
-; sc079 & vk20sc039:: Send, {Enter}
+
 ; 無変換 + j⇒PageUp
 sc07B & j:: Send, {PgUp}
 ; 無変換 + k⇒PageDown
@@ -18,15 +19,23 @@ sc07B & k:: Send, {PgDn}
 sc07B & h:: Send, {Home}
 ; 無変換 + l⇒End
 sc07B & l:: Send, {End}
+
+; コマンド関連
+; 変換 + z⇒Windows + d （全ウィンドウ最小化）
+sc079 & z:: Send, #d
+; 変換 + SPACE ⇒ Enter
+sc079 & Space::Send, {Enter}
+; 無変換 + 変換⇒半角/全角 （IME切り替え）
+sc07B & sc079:: Send, {vkF3sc029}
+; CTRL + SPACE ⇒ Backspace
+^Space::Send, {BS}
+
+
 ; 無変換 + o⇒Tab
 ; 無変換 + u⇒Shift + Tab
 ; 無変換 + >⇒Alt + Tab （タスクの切り替え）
 ; 無変換 + <⇒Shift + Alt + Tab （タスクの逆切り替え）
 ; 無変換 + @⇒Alt + F4 （アプリ終了）
-; 無変換 + 変換⇒半角/全角 （IME切り替え）
-; sc07B & sc079 :: Send, {vkF3sc029}
-; CTRL + SPACE⇒BS
-; LCtrl & vk20sc039 :: Send, {BS}
 
 
 
