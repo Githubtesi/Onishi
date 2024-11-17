@@ -1,3 +1,5 @@
+; 変則大西配列
+
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 
@@ -60,7 +62,7 @@ k::n
 ; return
 
 
-d::a
+d::u
 ; ;d::a→alt
 ; d::
 ;     KeyWait, d, T0.2  ; 0.2秒待機して、押し続けられているか判定
@@ -114,7 +116,7 @@ j::t
 -::/
 
 w::l
-e::u
+;e::u
 r::,
 t::.
 y::f
@@ -122,7 +124,7 @@ u::w
 i::r
 o::y
 
-a::e
+;a::e
 s::i
 g::-
 h::k
