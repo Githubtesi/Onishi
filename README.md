@@ -61,12 +61,14 @@ Windows 起動時に自動実行したい場合：
 以下のフォルダに配置
 C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
-## 📄 License
-
 ---
+
+## 📄 License
 
 MIT License
 （自由に改変・再配布・個人利用 / 商用利用可能）
+
+---
 
 ## 🙏 Acknowledgements
 
