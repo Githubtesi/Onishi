@@ -48,6 +48,7 @@ QWERTY 配列時は Space キーは通常動作になります。
 
 ```bash
 git clone https://github.com/yourname/onishi-qwerty-ahk.git
+```
 
 ---
 
@@ -64,7 +65,7 @@ C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startu
 
 ---
 
-## MIT License
+MIT License
 （自由に改変・再配布・個人利用 / 商用利用可能）
 
 ## 🙏 Acknowledgements
