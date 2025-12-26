@@ -26,8 +26,8 @@ AutoHotkey を使って
 |---|---|
 | `変換 + Space` | Enter |
 | `無変換 + Space` | Backspace |
-| `無変換 + j` | ↓ |
-| `無変換 + k` | ↑ |
+| `変換 + j` | ↓ |
+| `変換 + k` | ↑ |
 
 QWERTY 配列時は Space キーは通常動作になります。
 
