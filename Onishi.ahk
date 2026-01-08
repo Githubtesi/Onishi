@@ -5,92 +5,73 @@ SetWorkingDir(A_ScriptDir)
 ; 初期状態: リマッピングは無効 (半角+英語入力モードとみなす)
 global toggle := false
 
-
-; Alt + Ctrl + Space で切替
-^!Space:: {
+; -------------------------------------------------------------------
+; 切り替え用メイン関数（一箇所にまとめました）
+; -------------------------------------------------------------------
+ExecuteToggle() {
     global toggle
     toggle := !toggle
 
-    vcurrentwindow := WinGetID("A")
-    vimestate := DllCall("user32.dll\SendMessageA"
-        , "UInt", DllCall("imm32.dll\ImmGetDefaultIMEWnd", "Uint", vcurrentwindow)
-        , "UInt", 0x0283
-        , "Int", 0x0005
-        , "Int", 0)
-
-    SendInput "{vkF3}"
-
     if toggle {
-        if (vimestate = 1)
-            SendInput "{vkF3}"
-        ShowModernMsg("日本語入力 (大西配列)", "🈶")
+        ShowModernMsg("大西配列", "🈶")
     } else {
-        if (vimestate = 0)
-            SendInput "{vkF3}"
-        ShowModernMsg("英語入力 (QWERTY配列)", "🔤")
+        ShowModernMsg("QWERTY配列", "🔤")
     }
 }
+
+; Alt + Ctrl + Space 切替可能
+^!Space:: ExecuteToggle()
+
+; -------------------------------------------------------------------
+; q + w の同時押し設定 (75ms 判定)
+; -------------------------------------------------------------------
+; $ 記号は無限ループ防止、~ は修飾キーとの競合回避に役立ちますが、
+; 同時押しの場合は下記のように個別に定義するのが確実です。
+
+$q:: {
+    if KeyWait("w", "D T0.075") { ; 75ms以内にwが押されたか
+        SendInput "{vkF3}"
+        KeyWait("w") ; 重複防止のため、wが離されるのを待つ
+        Send("{Backspace}")
+    } else {
+        Send("q")
+    }
+}
+
 
 ;----------------------------------------
 ; モダン風ポップアップ表示
 ;----------------------------------------
 ShowModernMsg(text, icon := "") {
     local g, monitorW, monitorH
-
     monitorW := A_ScreenWidth
     monitorH := A_ScreenHeight
-
     g := Gui("+AlwaysOnTop -Caption +ToolWindow")
     g.BackColor := "202020"
-
     g.Add("Text", "x20 y15 cWhite", icon)
     g.Add("Text", "x60 y15 w250 cWhite", text)
-
     g.Show("NoActivate x" monitorW - 320 " y" monitorH - 120 " AutoSize")
-
-    ; ✅ 修正ポイント: for i in 1..10 に変更
-    Loop 10
-    {
+    Loop 10 {
         WinSetTransparent(25 * A_Index, "ahk_id " g.Hwnd)
         Sleep 20
     }
-
     SetTimer(() => g.Destroy(), -1500)
 }
 
-
 ; -------------------------------------------------------------------
-
-
-
 ; ここからカスタム配列のリマッピング
-; toggleが有効であり、かつCtrlまたはAltが押されていない場合にカスタム配列を適用
+; -------------------------------------------------------------------
 #HotIf toggle && !(GetKeyState("Ctrl", "P") || GetKeyState("Alt", "P"))
 
-; 入力時のショートカット
-; ホットキー定義を v2 形式に修正 ({} で囲む)
-; sc079 (変換) & Space ⇒ Enter
-sc079 & Space:: {
-    Send("{Enter}")
-}
-; sc07B (無変換) & Space ⇒ Backspace
-sc07B & Space:: {
-    Send("{Backspace}")
-}
+sc079 & Space:: Send("{Enter}")
+sc07B & Space:: Send("{Backspace}")
 
-; sc079 (変換) & j ⇒ ↓
-sc079 & j:: {
-    Send("{Down}")
-}
-; sc079 (変換) & k ⇒ ↑
-sc079 & k:: {
-    Send("{Up}")
-}
+sc079 & k:: Send("{Down}")
+sc079 & i:: Send("{Up}")
+sc079 & j:: Send("{Left}")
+sc079 & l:: Send("{Right}")
 
-
-; カスタム配列: リマッピングするキーのマップ
 -::/
-
 w::l
 e::u
 r::,
@@ -99,7 +80,6 @@ y::f
 u::w
 i::r
 o::y
-
 a::e
 s::i
 d::a
@@ -109,13 +89,12 @@ h::k
 j::t
 k::n
 l::s
-sc027::h ; sc027はセミコロンキー
-
-b::sc027 ; セミコロンキーを出力
+sc027::h 
+b::sc027 
 n::g
 m::d
 ,::m
 .::j
 /::b
 
-#HotIf ; ここで条件付きホットキーのブロックを終了
+#HotIf
