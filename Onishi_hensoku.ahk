@@ -77,11 +77,12 @@ e::u
 r::,
 t::.
 y::f
+a::e
 u::w
 i::r
 o::y
 s::i
-d::e
+d::a
 f::o
 g::f
 h::k
